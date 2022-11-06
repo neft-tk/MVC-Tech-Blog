@@ -1,0 +1,37 @@
+  <div class='add-blog-container'>
+    <h2>
+      Create a new blog post!
+    </h2>
+    <form class='new-blog-form'>
+      <label for='blog_title'>
+        Blog Title:
+      </label>
+      <br />
+      <textarea id='blog_title' name='blog_title' rows='2' cols='30'>
+        {{dish_name}}
+      </textarea>
+      <br />
+      <label for='blog_text'>
+        Text:
+      </label>
+      <br />
+      <textarea id='blog_text' name='blog_text' rows='5' cols='30'>
+        {{description}}
+      </textarea>
+      <br />
+      <label for='user_name'>
+        User Name:
+      </label>
+      <br />
+      <textarea id='user_name' name='user_name' rows='2' cols='30'>
+        {{guest_name}}
+      </textarea>
+      <br />
+      <br />
+      <button type='submit' value='Submit'>
+        Submit
+      </button>
+    </form>
+  </div>
+  
+  <script src="/js/add-blog.js"></script>

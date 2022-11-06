@@ -2,28 +2,28 @@ const express = require('express');
 const router = express.Router();
 const {User, Blog, Comment} = require('../models');
 
-// GETs all blogs and their comments
+// GETs all comments and their blogs
 router.get("/",(req,res)=>{
-    Blog.findAll({
+    Comment.findAll({
         // include:[Comment]
-    }).then(blogData=>{
-        res.json(blogData)
+    }).then(commentData=>{
+        res.json(commentData)
     }).catch(err=>{
         res.status(500).json({msg:"an error occurred",err})
     })
 })
 
-// POST a specific blog and the comments
+// POST a specific comment
 router.post("/", (req, res) => {
     if(!req.session.userInfo){
         return res.status(403).json({msg:"Login first please."})
     }
-    Blog.create({
+    Comment.create({
         title:req.body.title,
         body:req.body.body,
         UserId:req.session.userInfo.id
-    }).then(blogData =>{
-        res.json(blogData)
+    }).then(commentData =>{
+        res.json(commentData)
     }).catch(err => {
         res.status(500).json({msg:"An error occured",err})
     })

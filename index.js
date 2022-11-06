@@ -39,6 +39,9 @@ app.use(
 const userRoutes = require("./controllers/userController");
 app.use("/api/users", userRoutes);
 
+const blogRoutes = require("./controllers/blogController");
+app.use("/api/blogs", blogRoutes);
+
 app.get("/get-session", (req, res) => {
   res.json(req.session);
 });

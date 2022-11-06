@@ -7,6 +7,9 @@ User.hasMany(Blog,{
 });
 Blog.belongsTo(User)
 
+Blog.hasMany(Comment);
+Comment.belongsTo(Blog);
+
 module.exports = {
     User,
     Blog,

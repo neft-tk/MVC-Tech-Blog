@@ -14,6 +14,8 @@ const { User } = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+// app.use(express.static(path.join(__dirname, 'public')));
+
 
 // Static directory
 app.use(express.static("public"));
@@ -36,11 +38,16 @@ app.use(
   })
 );
 
+// Controller Routes
 const userRoutes = require("./controllers/userController");
 app.use("/api/users", userRoutes);
 
 const blogRoutes = require("./controllers/blogController");
 app.use("/api/blogs", blogRoutes);
+
+const frontEndRoutes = require("./controllers/frontEndController");
+app.use(frontEndRoutes);
+
 
 app.get("/get-session", (req, res) => {
   res.json(req.session);

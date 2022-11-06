@@ -2,9 +2,23 @@ const express = require('express');
 const router = express.Router();
 const {User,Blog} = require('../models');
 
-router.get("/",(req,res)=>{
-    res.render("home")
-})
+router.get("/", async (req,res)=>{
+        try {
+          const dbBlogData = await Blog.findAll({});
+      
+          const blogs = dbBlogData.map((blog) =>
+            blog.get({ plain: true })
+          );
+      
+          res.render('home', {
+            blogs,
+          });
+        } catch (err) {
+          console.log(err);
+          res.status(500).json(err);
+        }
+});
+
 
 router.get("/profile",(req,res)=>{
     if(!req.session.userInfo){

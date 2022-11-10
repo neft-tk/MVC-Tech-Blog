@@ -13,4 +13,31 @@
       {{blog.body}}
     </p>
   </div>
+    <div class='add-comment-container pb-5'>
+    <h4>
+      Add a new comment to this blog post
+    </h4>
+    <form class='new-comment-form'>
+      <label for='comment_text'>
+        Comment:
+      </label>
+      <br />
+      <textarea id='comment_text' name='comment_text' rows='1' cols='30'>
+        {{comment.body}}
+      </textarea>
+      <br />
+      <label for='user_name'>
+        User Name:
+      </label>
+      <br />
+      <textarea id='user_name' name='user_name' rows='1' cols='30'>
+        {{userInfo.email}}
+      </textarea>
+      <br />
+      <br />
+      <button type='submit' value='Submit'>
+        Submit Comment
+      </button>
+    </form>
+  </div>
   {{/each}}

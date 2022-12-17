@@ -19,10 +19,25 @@ router.get("/", async (req,res)=>{
         }
 });
 
+router.get("/home", (req,res) => {
+  if(!req.session.userInfo){
+    return res.redirect("/login")
+}
+  Blog.findAll().then(blogData => {
+    res.render("home", blogData)    
+  }).catch((err) => {
+    res.status(500).json({msg:"an error occured", err})
+})
+})
+
+router.get("/login", (req,res) => {
+  res.render("login")
+})
+
 
 router.get("/profile",(req,res)=>{
     if(!req.session.userInfo){
-        return res.redirect("/")
+        return res.redirect("/login")
     }
     User.findByPk(req.session.userInfo.id,{
         include:[Blog]

@@ -39,13 +39,13 @@ app.use(
 );
 
 // Controller Routes
-const userRoutes = require("./controllers/userController");
+const userRoutes = require("./controllers/api/userRoutes");
 app.use("/api/users", userRoutes);
 
-const blogRoutes = require("./controllers/blogController");
+const blogRoutes = require("./controllers//api/blogRoutes");
 app.use("/api/blogs", blogRoutes);
 
-const frontEndRoutes = require("./controllers/frontEndController");
+const frontEndRoutes = require("./controllers/frontEndRoutes");
 app.use(frontEndRoutes);
 
 

@@ -1,23 +1,21 @@
   <div class='login-container'>
     <h2>
-      Login with your username and password.
+      Login with your Email and password.
     </h2>
-    <form class='login-form'>
-      <label for='username_login'>
-        username:
+    <form class='login-form' id='loginForm'>
+      <label for='email_login'>
+        Email:
       </label>
       <br />
-      <textarea id='username_login' name='username_login' rows='2' cols='30'>
-        {{dish_name}}
-      </textarea>
+      <input id='email_login' name='email_login' rows='2' cols='30'>
+      </input>
       <br />
       <label for='password_login'>
         Password:
       </label>
       <br />
-      <textarea id='password_login' name='password_login' rows='5' cols='30'>
-        {{description}}
-      </textarea>
+      <input id='password_login' name='password_login' rows='5' cols='30'>
+      </input>
       <button type='submit' value='Submit'>
         Submit
       </button>

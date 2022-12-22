@@ -1,43 +1,10 @@
-<h1>Welcome {{email}} to the tech blog!</h1>
+<div class="flex flex-col justify-center items-center w-full">
+    {{#each posts as | post |}}
+    <div class="w-3/4">
+        {{> postCard post}}
+    </div>
+    {{/each}}
+</div>
 
-  {{#each blogs as |blog|}}
-  <div class="col-md-4">
-    <p>
-      {{blog.id}}.
-      {{blog.title}}
-    </p>
-  </div>
-  <div class="col-md-5">
-    <p>
-      Text:
-      {{blog.body}}
-    </p>
-  </div>
-    <div class='add-comment-container pb-5'>
-    <h4>
-      Add a new comment to this blog post
-    </h4>
-    <form class='new-comment-form'>
-      <label for='comment_text'>
-        Comment:
-      </label>
-      <br />
-      <textarea id='comment_text' name='comment_text' rows='1' cols='30'>
-        {{comment.body}}
-      </textarea>
-      <br />
-      <label for='user_name'>
-        User Name:
-      </label>
-      <br />
-      <textarea id='user_name' name='user_name' rows='1' cols='30'>
-        {{userInfo.email}}
-      </textarea>
-      <br />
-      <br />
-      <button type='submit' value='Submit'>
-        Submit Comment
-      </button>
-    </form>
-  </div>
-  {{/each}}
+<script src="/js/commentSection.js"></script>
+<script src="/js/replySection.js"></script>

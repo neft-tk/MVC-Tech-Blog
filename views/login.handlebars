@@ -1,25 +1,26 @@
-  <div class='login-container'>
-    <h2>
-      Login with your Email and Password.
-    </h2>
-    <form class='login-form' id='loginForm'>
-      <label for='email_login'>
-        Email:
-      </label>
-      <br />
-      <input id='email_login' name='email_login' rows='2' cols='30'>
-      </input>
-      <br />
-      <label for='password_login'>
-        Password:
-      </label>
-      <br />
-      <input id='password_login' name='password_login' rows='5' cols='30'>
-      </input>
-      <button type='submit' value='Submit'>
-        Submit
-      </button>
-    </form>
-  </div>
-  
-  <script src="/js/password.js"></script>
+<div class="flex flex-col justify-center items-center h-full">
+    
+    <div class="flex flex-col justify-center items-center bg-slate-500 rounded-lg border">
+        <div class="bg-slate-400 m-2 p-2 rounded-lg border">
+            <form class="flex flex-col justify-center items-center">
+
+                    <div>
+                    <label for="username">Username:</label><br>
+                    <input id="username" type="text" name="username"/>
+                    </div>
+                    <div class="my-2">
+                    <label for="password">Password:</label><br>
+                    <input id="password" type="password" name="password"/>
+                    </div>
+
+
+                <button id="signInButton" class="btn">Sign In</button>
+            </form>
+        </div>
+    </div>
+    <div class="mt-2">
+        or <a href="/signup"><button class="btnsm" >Sign Up!</button></ahref> 
+    </div>
+
+</div>
+<script src="/js/login.js"></script>

@@ -1,65 +1,45 @@
-const express = require("express");
-const exphbs = require("express-handlebars");
-const sequelize = require("./config/connection");
-const session = require("express-session");
-const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const express = require('express');
+const exphbs = require('express-handlebars');
+const sequelize = require('./config/connection');
+const session = require("express-session")
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-// Sets up the Express App
-// =============================================================
+// Set up the Express App
 const app = express();
 const PORT = process.env.PORT || 3000;
-// Requiring our models for syncing
-const { User } = require("./models");
 
-// Sets up the Express app to handle data parsing
+
+// Set Express to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-// app.use(express.static(path.join(__dirname, 'public')));
 
-
-// Static directory
-app.use(express.static("public"));
-
-const hbs = exphbs.create({});
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-
-app.use(
-  session({
+// Set Express to use sessions
+app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      maxAge: 2 * 60 * 60 * 1000,
+    cookie:{
+        maxAge:2*60*60*1000 // 2 hour expiration
     },
     store: new SequelizeStore({
-      db: sequelize,
-    }),
-  })
-);
+        db:sequelize
+    })
+}))
 
-// Controller Routes
-const userRoutes = require("./controllers/api/userRoutes");
-app.use("/api/users", userRoutes);
+// Set the static directory
+app.use(express.static('public'));
 
-const blogRoutes = require("./controllers//api/blogRoutes");
-app.use("/api/blogs", blogRoutes);
+// Create handlebars engine, add it to express, and set it as the view engine.
+const hbs = exphbs.create({});
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 
-const frontEndRoutes = require("./controllers/frontEndRoutes");
-app.use(frontEndRoutes);
+const rootRouter = require('./controllers');
+app.use(rootRouter);
 
-
-app.get("/get-session", (req, res) => {
-  res.json(req.session);
-});
-
-app.get("/logout",(req,res)=>{
-    req.session.destroy();
-    res.send("logged out !")
-})
-
-sequelize.sync({ force: false }).then(function () {
-  app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
-  });
+// sync sequalize and then start express
+sequelize.sync({ force: false }).then(function() {
+    app.listen(PORT, function() {
+    console.log('App listening on PORT ' + PORT);
+    });
 });

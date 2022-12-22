@@ -5,8 +5,7 @@ const bcrypt = require("bcrypt")
 class User extends Model {}
 
 User.init({
-    // add properites here, ex:
-    email: {
+    username: {
          type: DataTypes.STRING,
          allowNull:false,
          unique:true
@@ -25,7 +24,9 @@ User.init({
             return userObj
         }
     },
-    sequelize
+    sequelize,
+    updatedAt: false,
+    createdAt: false
 });
 
 module.exports=User

@@ -2,18 +2,18 @@ const { Model, DataTypes, NOW} = require('sequelize');
 const sequelize = require('../config/connection');
 const moment = require('moment');
 
-class Comment extends Model {}
+class Post extends Model {}
 
-Comment.init({
+Post.init({
+    // add properites here, ex:
+    title: {
+         type: DataTypes.STRING,
+         allowNull:false
+    },
     body: {
         type: DataTypes.TEXT,
         allowNull:false
-    },
-    date:{
-        type: DataTypes.DATE,
-        defaultValue: NOW,
-        allowNull: false
-    },
+    },                
     createdAt: {
         type: DataTypes.DATE,                 
       get() {
@@ -30,4 +30,4 @@ Comment.init({
     sequelize
 });
 
-module.exports=Comment
+module.exports=Post

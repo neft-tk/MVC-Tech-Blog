@@ -1,8 +1,12 @@
-const router = require('express').Router();
-const apiRoutes = require('./api');
-const frontEndRoutes = require("./frontEndRoutes")
+const express = require('express');
+const router = express.Router();
 
-router.use('/api', apiRoutes);
-router.use( frontEndRoutes);
+
+
+const apiController = require('./api');
+router.use('/api', apiController);
+
+const viewsController = require('./viewsController');
+router.use(viewsController);
 
 module.exports = router;

@@ -13,7 +13,7 @@ loginForm.addEventListener("submit",e=>{
         }
     }).then(res=>{
         if(res.ok){
-           window.location.replace('/home')        
+           window.location.replace('/')        
         } else {
             alert("trumpet sound")
         }
